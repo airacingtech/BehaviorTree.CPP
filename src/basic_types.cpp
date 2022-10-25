@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <clocale>
-#include <charconv>
 
 namespace BT
 {
@@ -106,33 +105,25 @@ std::string convertFromString<std::string>(StringView str)
 template <>
 int convertFromString<int>(StringView str)
 {
-  int result = 0;
-  std::from_chars(str.data(), str.data() + str.size(), result);
-  return result;
+  return std::stoi(str.data());
 }
 
 template <>
 long convertFromString<long>(StringView str)
 {
-  long result = 0;
-  std::from_chars(str.data(), str.data() + str.size(), result);
-  return result;
+  return std::stol(str.data());
 }
 
 template <>
 unsigned convertFromString<unsigned>(StringView str)
 {
-  unsigned result = 0;
-  std::from_chars(str.data(), str.data() + str.size(), result);
-  return result;
+  return unsigned(std::stoul(str.data()));
 }
 
 template <>
 unsigned long convertFromString<unsigned long>(StringView str)
 {
-  unsigned long result = 0;
-  std::from_chars(str.data(), str.data() + str.size(), result);
-  return result;
+  return std::stoul(str.data());
 }
 
 template <>
