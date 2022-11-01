@@ -13,7 +13,8 @@ class PublisherZMQ : public StatusChangeLogger
 
 public:
   PublisherZMQ(const BT::Tree& tree, unsigned max_msg_per_second = 25,
-               unsigned publisher_port = 1666, unsigned server_port = 1667);
+               unsigned publisher_port = 1666, unsigned server_port = 1667,
+               std::string ip_addr = "*");
 
   virtual ~PublisherZMQ();
 
