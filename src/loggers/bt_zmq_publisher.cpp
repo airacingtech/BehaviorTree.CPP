@@ -18,7 +18,8 @@ struct PublisherZMQ::Pimpl
 };
 
 PublisherZMQ::PublisherZMQ(const BT::Tree& tree, unsigned max_msg_per_second,
-                           unsigned publisher_port, unsigned server_port) :
+                           unsigned publisher_port, unsigned server_port,
+                           std::string ip_addr) :
   StatusChangeLogger(tree.rootNode()),
   tree_(tree),
   min_time_between_msgs_(std::chrono::microseconds(1000 * 1000) / max_msg_per_second),
@@ -44,9 +45,9 @@ PublisherZMQ::PublisherZMQ(const BT::Tree& tree, unsigned max_msg_per_second,
 
   char str[100];
 
-  sprintf(str, "tcp://*:%d", publisher_port);
+  sprintf(str, "tcp://%s:%d", ip_addr.c_str(), publisher_port);
   zmq_->publisher.bind(str);
-  sprintf(str, "tcp://*:%d", server_port);
+  sprintf(str, "tcp://%s:%d", ip_addr.c_str(), server_port);
   zmq_->server.bind(str);
 
   int timeout_ms = 100;
