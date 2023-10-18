@@ -6,7 +6,7 @@ set(CMAKE_CONFIG_PATH ${CMAKE_MODULE_PATH}  "${CMAKE_CURRENT_LIST_DIR}/cmake")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CONFIG_PATH}")
 
 #---- Enable C++14 ----
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(MSVC)
@@ -18,7 +18,7 @@ endif()
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 #---- project configuration ----
-option(BUILD_EXAMPLES   "Build tutorials and examples" ON)
+option(BUILD_EXAMPLES   "Build tutorials and examples" OFF)
 option(BUILD_UNIT_TESTS "Build the unit tests" ON)
 option(BUILD_TOOLS "Build commandline tools" ON)
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
